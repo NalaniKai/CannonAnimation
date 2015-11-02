@@ -25,14 +25,6 @@ public class CannonMainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cannon_main);
 
-		/*
-		// Create an animation canvas and place it in the main layout
-		Animator testAnim = new TestAnimator();
-		AnimationCanvas myCanvas = new AnimationCanvas(this, testAnim);
-		LinearLayout mainLayout = (LinearLayout) this
-				.findViewById(R.id.topLevelLayout);
-		mainLayout.addView(myCanvas);*/
-
 		//Create cannonball animation and add to main layout
 		Animator cannonball = new CannonBall();
 		AnimationCanvas ballCanvas = new AnimationCanvas(this, cannonball);

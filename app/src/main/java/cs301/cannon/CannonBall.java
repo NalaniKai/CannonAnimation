@@ -67,9 +67,6 @@ public class CannonBall implements Animator {
         Paint yellow = new Paint();
         yellow.setColor(Color.YELLOW);
 
-        canvas.drawRect(0,0, 60, 60, white);
-        canvas.drawText("Shoot", 20, 25, black);
-
         float height = canvas.getHeight(); //get height of canvas
         float width = canvas.getWidth(); //get width of canvas
 
