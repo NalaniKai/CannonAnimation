@@ -70,11 +70,17 @@ public class CannonBall implements Animator {
         yellow.setColor(Color.YELLOW);
 
         //targets
-        canvas.drawRect(width - 900, height-150, width-800, height, yellow); //target one
-        canvas.drawRect(width-400, height-200, width-300, height, yellow); //target two
+        float firstLeft = width - 900;
+        float firstLeftTop = height-150;
+        float firstRight = width-800;
+        float secondLeft = width-400;
+        float secondLeftTop = height-200;
+        float secondRight = width-300;
+        canvas.drawRect(firstLeft, firstLeftTop, firstRight, height, yellow); //target one
+        canvas.drawRect(secondLeft, secondLeftTop, secondRight, height, yellow); //target two
 
-        double velInitial = 90; //initial velocity cannonball
-        double xVelocity = 75; //horizontal velocity cannonball
+        double velInitial = 130; //initial velocity cannonball
+        double xVelocity = 55; //horizontal velocity cannonball
         //initial vertical velocity cannonball
         double yVelInitial = Math.sqrt( (velInitial*velInitial) - (xVelocity*xVelocity) );
         double ppf = (count*5)%800; //position of cannonball moving 20 pixels per frame
@@ -88,11 +94,11 @@ public class CannonBall implements Animator {
         yBall = yBall - (yVelFinal*yVelFinal - yVelInitial*yVelInitial) / (-2*9.81);
 
         //create red color
-        Paint redPaint = new Paint();
-        redPaint.setColor(Color.RED);
+        Paint red = new Paint();
+        red.setColor(Color.RED);
 
         //Draws the cannonball in the correct position
-        canvas.drawCircle((float)xBall, (float)yBall, 40, redPaint);
+        canvas.drawCircle((float)xBall, (float)yBall, 40, red);
 
         //draws cannon
         head = new Path();
@@ -106,6 +112,45 @@ public class CannonBall implements Animator {
 
         //cannon base
         canvas.drawCircle(50, height - 80, 50, black);
+
+        //check if cannonball hits a target
+        if( xBall > firstLeft && xBall < firstRight && yBall > firstLeftTop && yBall < height ) {
+            Path explosion = new Path();
+            explosion.reset();
+            explosion.moveTo(firstLeft, firstLeftTop);
+            explosion.lineTo(firstLeft + 25, firstLeftTop + 40);
+            explosion.lineTo(firstLeft + 65, firstLeftTop - 5);
+            explosion.lineTo(firstLeft+120, firstLeftTop+55);
+            explosion.lineTo(firstRight, firstLeftTop+25);
+            explosion.lineTo(firstRight-40, firstLeftTop+50);
+            explosion.lineTo(firstRight-10, firstLeftTop+90);
+            explosion.lineTo(firstRight-50, firstLeftTop+60);
+            explosion.lineTo(firstLeft+30, firstLeftTop+90);
+            explosion.lineTo(firstLeft+40, firstLeftTop+50);
+            explosion.lineTo(firstLeft, firstLeftTop+80);
+            explosion.lineTo(firstLeft+30, firstLeftTop+50);
+            explosion.moveTo(firstLeft, firstLeftTop);
+            canvas.drawPath(explosion, red);
+        }
+
+        if (xBall > secondLeft && xBall < secondRight && yBall > secondLeftTop && yBall < height) {
+            Path explosion = new Path();
+            explosion.reset();
+            explosion.moveTo(secondLeft, secondLeftTop);
+            explosion.lineTo(secondLeft + 25, secondLeftTop + 40);
+            explosion.lineTo(secondLeft+65, secondLeftTop-5);
+            explosion.lineTo(secondLeft+120, secondLeftTop+55);
+            explosion.lineTo(secondRight, secondLeftTop+25);
+            explosion.lineTo(secondRight-40, secondLeftTop+50);
+            explosion.lineTo(secondRight-10, secondLeftTop+90);
+            explosion.lineTo(secondRight-50, secondLeftTop+60);
+            explosion.lineTo(secondLeft+30, secondLeftTop+90);
+            explosion.lineTo(secondLeft+40, secondLeftTop+50);
+            explosion.lineTo(secondLeft, secondLeftTop+80);
+            explosion.lineTo(secondLeft+30, secondLeftTop+50);
+            explosion.moveTo(secondLeft, secondLeftTop);
+            canvas.drawPath(explosion, red);
+        }
     }
 
     // onTouch          Stores x, y coordinates of the place the user touches.
