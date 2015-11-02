@@ -71,19 +71,38 @@ public class CannonBall implements Animator {
 
         //targets
         float firstLeft = width - 900;
-        float firstLeftTop = height-150;
-        float firstRight = width-800;
+        float firstLeftTop = height-250;
+        float firstRight = width-600;
         float secondLeft = width-400;
-        float secondLeftTop = height-200;
+        float secondLeftTop = height-300;
         float secondRight = width-300;
         canvas.drawRect(firstLeft, firstLeftTop, firstRight, height, yellow); //target one
         canvas.drawRect(secondLeft, secondLeftTop, secondRight, height, yellow); //target two
 
-        double velInitial = 130; //initial velocity cannonball
-        double xVelocity = 55; //horizontal velocity cannonball
+        double velInitial = 125; //initial velocity cannonball
+        double xVelocity = 90; //horizontal velocity cannonball
+        if( xCannon < 20 && yCannon > height-20 ) { xVelocity = 10; }
+        else if( xCannon < 20 ) { xVelocity = 5; }
+        else if( xCannon < 35 ) { xVelocity = 15; }
+        else if( xCannon < 40 && yCannon > height-20 ) { xVelocity = 65; }
+        else if( xCannon < 40 && yCannon > height-50 ) { xVelocity = 55; }
+        else if( xCannon < 40 ) { xVelocity = 40; }
+        else if( xCannon < 60 && yCannon > height-20 ) { xVelocity = 100; }
+        else if( xCannon < 60 && yCannon > height-50 ) { xVelocity = 90; }
+        else if( xCannon < 60 ) { xVelocity = 60; }
+        else if( xCannon < 80 && yCannon > height-20 ) { xVelocity = 110; }
+        else if( xCannon < 80 && yCannon > height-50 ) { xVelocity = 105; }
+        else if( xCannon < 80 ) { xVelocity = 80; }
+        else if( xCannon < 100 && yCannon > height-20 ) { xVelocity = 115; }
+        else if( xCannon < 100 && yCannon > height-50 ) { xVelocity = 110; }
+        else if( xCannon < 100 ) { xVelocity = 100; }
+        else if( xCannon < 200 && yCannon > height-20 ) { xVelocity = 125; }
+        else if( xCannon < 200 && yCannon > height-50 ) { xVelocity = 120; }
+        else if( xCannon < 200 ) { xVelocity = 100; }
+
         //initial vertical velocity cannonball
         double yVelInitial = Math.sqrt( (velInitial*velInitial) - (xVelocity*xVelocity) );
-        double ppf = (count*5)%800; //position of cannonball moving 20 pixels per frame
+        double ppf = (count*5)%600; //position of cannonball moving 20 pixels per frame
 
         double xBall = xVelocity*ppf + xCannon + 25; //x position of cannonball
 
@@ -113,8 +132,9 @@ public class CannonBall implements Animator {
         //cannon base
         canvas.drawCircle(50, height - 80, 50, black);
 
-        //check if cannonball hits a target
-        if( xBall > firstLeft && xBall < firstRight && yBall > firstLeftTop && yBall < height ) {
+        //check if cannonball hits first target
+        if( xBall > firstLeft-40 && xBall < firstRight+40 && yBall > firstLeftTop-40 && yBall < height ) {
+            //draw explosion on target
             Path explosion = new Path();
             explosion.reset();
             explosion.moveTo(firstLeft-60, firstLeftTop-60);
@@ -133,7 +153,9 @@ public class CannonBall implements Animator {
             canvas.drawPath(explosion, red);
         }
 
-        if (xBall > secondLeft && xBall < secondRight && yBall > secondLeftTop && yBall < height) {
+        //checks if cannonball hits second target
+        if (xBall > secondLeft-40 && xBall < secondRight+40 && yBall > secondLeftTop-40 && yBall < height) {
+            //draw explosion on target
             Path explosion = new Path();
             explosion.reset();
             explosion.moveTo(secondLeft-60, secondLeftTop-60);
