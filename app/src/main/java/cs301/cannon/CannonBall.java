@@ -117,38 +117,38 @@ public class CannonBall implements Animator {
         if( xBall > firstLeft && xBall < firstRight && yBall > firstLeftTop && yBall < height ) {
             Path explosion = new Path();
             explosion.reset();
-            explosion.moveTo(firstLeft, firstLeftTop);
-            explosion.lineTo(firstLeft + 25, firstLeftTop + 40);
-            explosion.lineTo(firstLeft + 65, firstLeftTop - 5);
-            explosion.lineTo(firstLeft+120, firstLeftTop+55);
-            explosion.lineTo(firstRight, firstLeftTop+25);
-            explosion.lineTo(firstRight-40, firstLeftTop+50);
-            explosion.lineTo(firstRight-10, firstLeftTop+90);
-            explosion.lineTo(firstRight-50, firstLeftTop+60);
-            explosion.lineTo(firstLeft+30, firstLeftTop+90);
-            explosion.lineTo(firstLeft+40, firstLeftTop+50);
-            explosion.lineTo(firstLeft, firstLeftTop+80);
+            explosion.moveTo(firstLeft-60, firstLeftTop-60);
+            explosion.lineTo(firstLeft+25, firstLeftTop);
+            explosion.lineTo(firstLeft+65, firstLeftTop-50);
+            explosion.lineTo(firstLeft+90, firstLeftTop+15);
+            explosion.lineTo(firstRight+20, firstLeftTop+25);
+            explosion.lineTo(firstRight-40, firstLeftTop+80);
+            explosion.lineTo(firstRight-10, firstLeftTop+120);
+            explosion.lineTo(firstRight-60, firstLeftTop+70);
+            explosion.lineTo(firstLeft+30, firstLeftTop+120);
+            explosion.lineTo(firstLeft+20, firstLeftTop+70);
+            explosion.lineTo(firstLeft, firstLeftTop+60);
             explosion.lineTo(firstLeft+30, firstLeftTop+50);
-            explosion.moveTo(firstLeft, firstLeftTop);
+            explosion.moveTo(firstLeft-60, firstLeftTop-60);
             canvas.drawPath(explosion, red);
         }
 
         if (xBall > secondLeft && xBall < secondRight && yBall > secondLeftTop && yBall < height) {
             Path explosion = new Path();
             explosion.reset();
-            explosion.moveTo(secondLeft, secondLeftTop);
-            explosion.lineTo(secondLeft + 25, secondLeftTop + 40);
-            explosion.lineTo(secondLeft+65, secondLeftTop-5);
-            explosion.lineTo(secondLeft+120, secondLeftTop+55);
-            explosion.lineTo(secondRight, secondLeftTop+25);
-            explosion.lineTo(secondRight-40, secondLeftTop+50);
-            explosion.lineTo(secondRight-10, secondLeftTop+90);
-            explosion.lineTo(secondRight-50, secondLeftTop+60);
-            explosion.lineTo(secondLeft+30, secondLeftTop+90);
-            explosion.lineTo(secondLeft+40, secondLeftTop+50);
-            explosion.lineTo(secondLeft, secondLeftTop+80);
+            explosion.moveTo(secondLeft-60, secondLeftTop-60);
+            explosion.lineTo(secondLeft+25, secondLeftTop);
+            explosion.lineTo(secondLeft+65, secondLeftTop-50);
+            explosion.lineTo(secondLeft+90, secondLeftTop+15);
+            explosion.lineTo(secondRight+20, secondLeftTop+25);
+            explosion.lineTo(secondRight-40, secondLeftTop+80);
+            explosion.lineTo(secondRight-10, secondLeftTop+120);
+            explosion.lineTo(secondRight-60, secondLeftTop+70);
+            explosion.lineTo(secondLeft+30, secondLeftTop+120);
+            explosion.lineTo(secondLeft+20, secondLeftTop+70);
+            explosion.lineTo(secondLeft, secondLeftTop+60);
             explosion.lineTo(secondLeft+30, secondLeftTop+50);
-            explosion.moveTo(secondLeft, secondLeftTop);
+            explosion.moveTo(secondLeft-60, secondLeftTop-60);
             canvas.drawPath(explosion, red);
         }
     }
