@@ -8,7 +8,7 @@ import android.graphics.Path;
 import android.view.MotionEvent;
 
 /**
- * Created by chunm18 on 11/1/2015.
+ * Created by Nalani (Megan Chun) on 11/1/2015.
  */
 public class CannonBall implements Animator {
 
